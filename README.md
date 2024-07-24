@@ -35,7 +35,7 @@ A Telegram bot for managing medical cards
 
 <img src="ReadmeContent/2.jpg" width="300"/>
 
-5. Install clasp in directory with `Repo`
+5. Install [clasp](https://github.com/google/clasp) in directory with `Repo`
 > npm install -g @google/clasp
 6. Login clasp with `Script ID`
 > clasp login
