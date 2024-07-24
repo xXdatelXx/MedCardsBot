@@ -1,7 +1,7 @@
 # MedCardsBot
 A Telegram bot for managing medical cards 
 
-`Dont look to the code-quality, writed by GPT 🤡`
+`Dont look to the code-quality, written by GPT 🤡`
 
 # Functional:
 ```
