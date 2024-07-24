@@ -71,15 +71,15 @@ function patientExist(patientName) {
     var data = sheet.getDataRange().getValues();
 
     for (var i = 1; i < data.length; i++) {
-        if (data[i][0] === patientName) { // Assuming patient name is in the first column
+        if (data[i][0] === patientName) {
             return true;
         }
     }
     return false;
 }
 
-function updatePatientContactInfo(chatId, text, state){
-  if (!state.step) {
+function updatePatientContactInfo(chatId, text, state) {
+    if (!state.step) {
         setState(chatId, { command: '/updatepatientcontactinfo', step: 1 });
         sendMessage(chatId, 'Напишiть iмя пацiента для замiни контактной iнформацii');
     } else if (state.step === 1) {
@@ -106,8 +106,8 @@ function updatePatientContactInfo(chatId, text, state){
     }
 }
 
-function updatePatientAdditionalInfo(chatId, text, state){
-  if (!state.step) {
+function updatePatientAdditionalInfo(chatId, text, state) {
+    if (!state.step) {
         setState(chatId, { command: '/updatepatientadditionalinfo', step: 1 });
         sendMessage(chatId, 'Напишiть iмя пацiента для замiни додатковоi iнформацii');
     } else if (state.step === 1) {

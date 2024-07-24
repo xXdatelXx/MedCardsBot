@@ -1,4 +1,4 @@
-var TELEGRAM_API_TOKEN = '7330984114:AAG8Y71PYxyT2IcQjN_SBRJaJ7OrbkPjqzY';
+var TELEGRAM_API_TOKEN = 'YOUR-TOKEN';
 
 function sendMessage(chatId, text) {
     var url = 'https://api.telegram.org/bot' + TELEGRAM_API_TOKEN + '/sendMessage';
