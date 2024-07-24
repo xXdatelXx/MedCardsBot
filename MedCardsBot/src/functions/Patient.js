@@ -16,7 +16,7 @@ function addPatient(chatId, text, state) {
         setState(chatId, { command: '/addpatient', step: 3, name: state.name, contactInfo: state.contactInfo });
         sendMessage(chatId, 'Напишiть додаткову iнформацию');
     } else if (state.step === 3) {
-        var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Patients');
+        let sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Patients');
         sheet.appendRow([state.name, state.contactInfo, text || '']);
         sendMessage(chatId, 'Пацієнт доданий');
         resetState(chatId);
@@ -24,11 +24,11 @@ function addPatient(chatId, text, state) {
 }
 
 function findAllPatients() {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Patients');
-    var data = sheet.getDataRange().getValues();
-    var result = [];
+    let sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Patients');
+    let data = sheet.getDataRange().getValues();
+    let result = [];
 
-    for (var i = 1; i < data.length; i++) {
+    for (let i = 1; i < data.length; i++) {
         let additionalInfo = data[i][2] != "" ? " | " + data[i][2] : ""
         let column = i + ") " + "`" + data[i][0] + "`" + " | " + "`" + data[i][1] + "`" + additionalInfo;
         result.push(column);
@@ -52,12 +52,12 @@ function deletePatient(chatId, text, state) {
         deleteWorkByName(chatId, text, getState(chatId), "/deletescheduleworkbyname", "Schedule", true);
 
 
-        var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Patients");
-        var data = sheet.getDataRange().getValues();
-        for (var i = data.length - 1; i > 0; i--) {
+        let sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Patients");
+        let data = sheet.getDataRange().getValues();
+        for (let i = data.length - 1; i > 0; i--) {
             if (text == data[i][0]) {
                 sheet.deleteRow(i + 1);
-                continue;
+
             }
         }
 
@@ -67,10 +67,10 @@ function deletePatient(chatId, text, state) {
 }
 
 function patientExist(patientName) {
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Patients');
-    var data = sheet.getDataRange().getValues();
+    let sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Patients');
+    let data = sheet.getDataRange().getValues();
 
-    for (var i = 1; i < data.length; i++) {
+    for (let i = 1; i < data.length; i++) {
         if (data[i][0] === patientName) {
             return true;
         }
@@ -93,9 +93,9 @@ function updatePatientContactInfo(chatId, text, state) {
         setState(chatId, { command: '/updatepatientcontactinfo', step: 2, name: state.name });
         sendMessage(chatId, 'Напишiть нову контактну iнформацию');
     } else {
-        var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Patients');
-        var data = sheet.getDataRange().getValues();
-        for (var i = 1; i < data.length; i++) {
+        let sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Patients');
+        let data = sheet.getDataRange().getValues();
+        for (let i = 1; i < data.length; i++) {
             if (data[i][0] === state.name) {
                 sheet.getRange(i + 1, 2).setValue("'" + text);
                 break;
@@ -121,9 +121,9 @@ function updatePatientAdditionalInfo(chatId, text, state) {
         setState(chatId, { command: '/updatepatientadditionalinfo', step: 2, name: state.name });
         sendMessage(chatId, 'Напишiть нову додаткову iнформацiю');
     } else {
-        var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Patients');
-        var data = sheet.getDataRange().getValues();
-        for (var i = 1; i < data.length; i++) {
+        let sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Patients');
+        let data = sheet.getDataRange().getValues();
+        for (let i = 1; i < data.length; i++) {
             if (data[i][0] === state.name) {
                 sheet.getRange(i + 1, 3).setValue(text);
                 break;

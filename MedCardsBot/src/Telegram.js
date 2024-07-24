@@ -3,20 +3,20 @@ function doGet(e) {
 }
 
 function doPost(e) {
-    var update = JSON.parse(e.postData.contents);
-    var message = update.message;
-    var chatId = message.chat.id;
-    var text = message.text;
+    let update = JSON.parse(e.postData.contents);
+    let message = update.message;
+    let chatId = message.chat.id;
+    let text = message.text;
 
     handleUserInput(chatId, text);
 }
 
 function handleUserInput(chatId, text) {
     if (text.startsWith('/')) {
-      resetState(chatId);
+        resetState(chatId);
     }
 
-    var state = getState(chatId);
+    let state = getState(chatId);
 
     switch (state.command || text) {
         case '/addpatient':
@@ -51,7 +51,7 @@ function handleUserInput(chatId, text) {
         case '/deleteworkbyname':
             deleteWorkByName(chatId, text, state, '/deleteworkbyname', "Work Log");
             break;
-      
+
 
         case '/schedulework':
             addWork(chatId, text, state, '/schedulework', "Schedule");
